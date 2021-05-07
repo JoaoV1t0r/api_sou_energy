@@ -82,12 +82,9 @@ class ProdutoController extends Controller
         //ATUALIZA O PRODUTO PELO ID
         $produto = Produto::atualizar($attProduto, $request['id']);
 
-        //RETORNA O PRODUTO ATUALIZADO SE ENCONTRADO
-        if(count($produto) == 0){
-            return response('Produto não encontrado' ,status:Response::HTTP_OK);
-        }else{
-            return response()->json($produto, status:Response::HTTP_OK);
-        }
+        //RETORNA O PRODUTO ATUALIZADO
+        return response()->json($produto, status:Response::HTTP_OK);
+        
     }
 
     /**

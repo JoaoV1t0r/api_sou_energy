@@ -24,6 +24,6 @@ Route::get(uri: 'getProdutos/{id}', action: 'App\Http\Controllers\ProdutoControl
 
 Route::post(uri: 'postProdutos', action: 'App\Http\Controllers\ProdutoController@postProdutos');
 
-Route::post(uri: 'putProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@putProdutos');
+Route::put(uri: 'putProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@putProdutos');
 
 Route::delete(uri: 'deleteProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@deleteProdutos');

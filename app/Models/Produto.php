@@ -16,12 +16,16 @@ class Produto extends Model
      * @return array
      */
     public static function get(){
-        return DB::select('
+        //DEFINE A QUERY DE BUSCA
+        $query = "
             SELECT
                 id,nome,preco
             FROM
                 produtos
-        ');
+        ";
+
+        //RETRONA OS PRODUTOS ENCONTRADOS
+        return DB::select($query);
     }
 
     /**
@@ -30,18 +34,27 @@ class Produto extends Model
      * @return array
      */
     public static function getById($id){
-        return DB::select('
+        //DEFINE A QUERY DE BUSCA
+        $query = "
             SELECT
                 id,nome,preco
             FROM
                 produtos
             WHERE
                 id = :id
-        ',['id' => $id]);
+        ";
+
+        //DEFINE OS PARAMETROS DE BUSCA
+        $params = [
+            'id' => $id
+        ];
+
+        //FAZ A BUSCA E RETORNA O PRODUTO CASO ENCONTRADO
+        return DB::select($query, $params);
     }
 
     /**
-     * Método responsável por retornar um produto do banco de dados com base no seu id
+     * Método responsável por inserir um produto mo banco de dados
      * 
      * @return array
      */
@@ -55,12 +68,15 @@ class Produto extends Model
     }
 
     /**
-     * Método responsável por retornar um produto do banco de dados com base no seu id
+     * Método responsável por atualizar um produto no banco de dados com base no seu id
      * 
      * @return array
      */
     public static function atualizar($attProduto, $id){
+        //BUSCA O PRODUTO A SER ATUALIZADO
         $produto = self::getById($id);
+
+        //DEFININDO A QUERY COM BASE NOS ITENS A SEREM ATUALIZADOS
         $query = "
             UPDATE
                 produtos
@@ -75,6 +91,7 @@ class Produto extends Model
                 id = :id 
         ";
 
+        //DEFININDO OS PARAMETROS A SEREM ATUALIZADOS
         $params = [];
         if(isset($attProduto['nome'])){
             $params['nome'] = $attProduto['nome'];
@@ -83,9 +100,13 @@ class Produto extends Model
             $params['preco'] = $attProduto['preco'];
         }
         $params['id'] = $id;
+
+        //ATUALIZA O PRODUTO CASO EXISTA PARAMETROS
         if(isset($attProduto['preco']) || isset($attProduto['nome']) ){
             DB::update($query,$params);
         }
+
+        //RETORNA O PRODUTO ATUALIZADO
         return self::getById($id);
     }
 
@@ -95,16 +116,24 @@ class Produto extends Model
      * @return array
      */
     public static function deleteProduto($id){
+        //BUCA O PRODUTO A SER DELETADO
         $produto = self::getById($id);
+
+        //DEFINE A QUERY
         $query = "
             DELETE FROM
                 produtos
             WHERE
                 id = :id
         ";
+
+        //DEFINE O ID DO PRODUTO A SER DELETADO
         $params['id'] = $id;
         
+        //DELETA O PRODUTO DO BANCO DE DADOS
         DB::delete($query,$params);
+
+        //RETORNA O PRODUTO QUE FOI DELETADO
         return $produto;
     }
 }
