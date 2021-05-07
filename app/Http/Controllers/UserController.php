@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 class UserController extends Controller
 {
     /**
-     * Método responsável por buscar um produto pelo seu Id e retorna-lo
+     * Método responsável cadastrar um novo usuario
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class UserController extends Controller
     }
 
     /**
-     * Método responsável por inserir novos produtos no banco de dados
+     * Método responsável por consultar o token de um usuario cadastrado
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -48,11 +48,14 @@ class UserController extends Controller
             'senha' => $request['senha']
         ];
 
+        //BUSCA O TOKEN
         $token = User::getToken($dados);
 
         if($token == false){
+            //RETORNO CASO O USUARIO NÃO SEJA CADASTRADO
             return response('E-mail ou senha errados.');
         } else{
+            //RETORNA O TOKEN DO USUARIO
             return response()->json($token, status:Response::HTTP_OK);
         }
     }

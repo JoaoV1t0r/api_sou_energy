@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "e8c22794-89a1-4400-a281-d66a553068a5",
+		"name": "Api sou energy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "rotas-produto",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getProdutos?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getProdutos"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E"
+								}
+							]
+						},
+						"description": "Get de todos os produtos"
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Produto X",
+									"type": "text"
+								},
+								{
+									"key": "preco",
+									"value": "999",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/postProdutos?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"postProdutos"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E"
+								}
+							]
+						},
+						"description": "Post para inserir produtos no banco de dados"
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getProdutos/5?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getProdutos",
+								"5"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E"
+								}
+							]
+						},
+						"description": "Get de rpoduto por Id"
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nome",
+									"value": "Produto Y",
+									"type": "text"
+								},
+								{
+									"key": "preco",
+									"value": "999",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/putProdutos/2?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"putProdutos",
+								"2"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E"
+								}
+							]
+						},
+						"description": "Rota para atualização de nome e preço de produtos com base em seu Id"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/deleteProdutos/2?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"deleteProdutos",
+								"2"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub21lIjoiSm9cdTAwZTNvIiwiZW1haWwiOiJqb2Fvdml0b3JAZ21haWwuY28iLCJzZW5oYSI6IiQyeSQxMCRnNGlWOXNrSzBxdFFsVUQyZnF0VUxPNHlkUFF6dUR6Yk9ZXC9vdk1BRjV3eXl0eHdGWWhIQy4ifQ.0chG2NB-U5ZjEdXFfwm6Jm7yYOySLITINxxxj0GZo8E"
+								}
+							]
+						},
+						"description": "Rota para deletar um produto com base em seu Id\r\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rotas-user",
+			"item": [
+				{
+					"name": "postUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "João",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "joaovitor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/postUser",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"postUser"
+							]
+						},
+						"description": "Cadastro do usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "getToken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "joaovitor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getToken?token",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getToken"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": null
+								}
+							]
+						},
+						"description": "rota para conferir o token do usuario"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

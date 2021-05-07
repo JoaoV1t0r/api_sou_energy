@@ -14,7 +14,13 @@ class User extends Model
         'password',
     ];
 
-    public static function cadastrar($dados){
+    /**
+     * Método responsável por cadastrar um novo usuario
+     * 
+     * @param array $dados
+     */
+    public static function cadastrar($dados)
+    {
         //DEFINE A QUERY DE CADASTRO
         $query = "
             INSERT INTO
@@ -22,26 +28,41 @@ class User extends Model
             VALUES( 0, :nome, :email, :senha, NOW(), NULL
         )";
 
-        DB::insert($query,$dados);
+        //INSERI OS DADOS NO BANCO
+        DB::insert($query, $dados);
 
+        //DEFINE A CHAVE PARA GERAR UM TOKEN
         $key = "a9aeaa72f8b86edc9c34113e518a897554293ab8";
 
+        //GERA UM TOKEN
         $jwt = JWT::encode($dados, $key);
+
+        //QUERY PARA CADASTRAR O TOKEN
         $queryToken = "
             INSERT INTO
                 tokens
             VALUES( 0, :id_user, :token
         )";
+
         $paramsToken = [
             'id_user' => self::getIdUser(),
             'token' => $jwt
         ];
 
-        DB::insert($queryToken,$paramsToken);
+        //INSERI O TOKEN NO BANCO DE DADOS
+        DB::insert($queryToken, $paramsToken);
+
+        //RETORNA O TOKEN
         return $jwt;
     }
 
-    public static function emailVerify($email){
+    /**
+     * Método responsável por verificar se existe um email já cadastrado
+     * 
+     * @param string $email
+     */
+    public static function emailVerify($email)
+    {
         //DEFINE A QUERY DE BUSCA
         $query = "
             SELECT
@@ -52,10 +73,15 @@ class User extends Model
                 email = :email
         ";
 
-        return count(DB::select($query,['email' => $email])) != 0 ? false : true;
+        //RETORNA SE O EMAIL EXITE
+        return count(DB::select($query, ['email' => $email])) != 0 ? false : true;
     }
 
-    public static function getIdUser(){
+    /**
+     * Método responsável por buscar o id de um usuario
+     */
+    public static function getIdUser()
+    {
         //DEFINE A QUERY DE BUSCA
         $query = "
             SELECT
@@ -64,10 +90,17 @@ class User extends Model
                 usuarios
         ";
 
+        //RETORNA O ID
         return DB::select($query)[0]->id;
     }
 
-    public static function getToken($dados){
+    /**
+     * Método responsável por buscar um token de um usuario
+     * 
+     * @param array $dados
+     */
+    public static function getToken($dados)
+    {
         //DEFINE A QUERY DE BUSCA
         $query = "
             SELECT
@@ -82,11 +115,14 @@ class User extends Model
             'email' => $dados['email']
         ];
 
-        $resultado = DB::select($query,$params);
+        //RESULTADO DA BUSCA
+        $resultado = DB::select($query, $params);
 
-        if(count($resultado) != 1){
+        if (count($resultado) != 1) {
+            //RETORNA FALSO CASO NÃO SEJA ENCONTRADO O USUARIO
             return false;
         } else {
+            //DEFINE A QUERY DE BUSCA
             $queryToken = "
                 SELECT
                     token
@@ -99,13 +135,18 @@ class User extends Model
                 'id_user' => $resultado[0]->id
             ];
 
-            $token = DB::select($queryToken,$paramsToken);
-
-            return $token;
+            //RETONA O TOKEN BUSCADO
+            return DB::select($queryToken, $paramsToken);;
         }
     }
 
-    public static function VerifyToken($token){
+    /**
+     * Método responsável por verificar se um token existe no banco de dados
+     * 
+     * @param string $token
+     */
+    public static function VerifyToken($token)
+    {
         //DEFINE A QUERY DE BUSCA
         $query = "
             SELECT
@@ -119,9 +160,7 @@ class User extends Model
             'token' => $token
         ];
 
-        $cosulta = DB::select($query,$params);
-
-        return count($cosulta) == 1 ? true : false;
-        
+        //RETORNA SE O TOKEN EXISTE OU NÃO  
+        return count(DB::select($query, $params)) == 1 ? true : false;
     }
 }
