@@ -110,7 +110,7 @@
 								}
 							]
 						},
-						"description": "Get de rpoduto por Id"
+						"description": "Get de produto por Id"
 					},
 					"response": []
 				},
@@ -236,7 +236,7 @@
 								"postUser"
 							]
 						},
-						"description": "Cadastro do usuario"
+						"description": "Rota de cadastro de usuario"
 					},
 					"response": []
 				},
