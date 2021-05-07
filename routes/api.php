@@ -14,17 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware([])->group(function(){});
+Route::middleware([App\Http\Middleware\EnsureTokenIsValid::class])->group(function(){
+    Route::get(uri: 'getProdutos', action: 'App\Http\Controllers\ProdutoController@getProdutos');
+    
+    Route::get(uri: 'getProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@getProdutosById');
+    
+    Route::post(uri: 'postProdutos', action: 'App\Http\Controllers\ProdutoController@postProdutos');
+    
+    Route::put(uri: 'putProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@putProdutos');
+    
+    Route::delete(uri: 'deleteProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@deleteProdutos');
+});
 
-Route::get(uri: 'getProdutos', action: 'App\Http\Controllers\ProdutoController@getProdutos');
 
-Route::get(uri: 'getProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@getProdutosById');
-
-Route::post(uri: 'postProdutos', action: 'App\Http\Controllers\ProdutoController@postProdutos');
-
-Route::put(uri: 'putProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@putProdutos');
-
-Route::delete(uri: 'deleteProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@deleteProdutos');
 
 Route::post(uri:'postUser', action: 'App\Http\Controllers\UserController@postUser');
 

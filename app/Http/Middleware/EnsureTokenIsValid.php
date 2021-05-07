@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class EnsureTokenIsValid
 {
@@ -16,6 +17,11 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $token = $request->input('token');
+        if(User::VerifyToken($token)){
+            return $next($request);
+        } else {
+            return response('Não autorizado');
+        }
     }
 }

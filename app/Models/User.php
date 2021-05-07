@@ -104,4 +104,24 @@ class User extends Model
             return $token;
         }
     }
+
+    public static function VerifyToken($token){
+        //DEFINE A QUERY DE BUSCA
+        $query = "
+            SELECT
+                token
+            FROM
+                tokens
+            WHERE
+                token = :token
+        ";
+        $params = [
+            'token' => $token
+        ];
+
+        $cosulta = DB::select($query,$params);
+
+        return count($cosulta) == 1 ? true : false;
+        
+    }
 }
