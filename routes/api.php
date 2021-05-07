@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware([])->group(function(){});
 
 Route::get(uri: 'getProdutos', action: 'App\Http\Controllers\ProdutoController@getProdutos');
 
@@ -27,3 +25,9 @@ Route::post(uri: 'postProdutos', action: 'App\Http\Controllers\ProdutoController
 Route::put(uri: 'putProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@putProdutos');
 
 Route::delete(uri: 'deleteProdutos/{id}', action: 'App\Http\Controllers\ProdutoController@deleteProdutos');
+
+Route::post(uri:'postUser', action: 'App\Http\Controllers\UserController@postUser');
+
+Route::post(uri:'getToken', action: 'App\Http\Controllers\UserController@getToken');
+
+

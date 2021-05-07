@@ -13,7 +13,7 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProdutos()
+    public function getProdutos(Request $request)
     {
         //BUSCA OS PRODUTOS NO BANCO DE DADOS
         $produtos = Produto::get();
@@ -27,7 +27,7 @@ class ProdutoController extends Controller
     }
 
     /**
-     * Método responsável por buscar um produtO e retorna-lo
+     * Método responsável por buscar um produto pelo seu Id e retorna-lo
      *
      * @return \Illuminate\Http\Response
      */
