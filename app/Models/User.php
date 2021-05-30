@@ -16,7 +16,7 @@ class User extends Model
 
     /**
      * Método responsável por cadastrar um novo usuario
-     * 
+     *
      * @param array $dados
      */
     public static function cadastrar($dados)
@@ -41,7 +41,7 @@ class User extends Model
         $queryToken = "
             INSERT INTO
                 tokens
-            VALUES( 0, :id_user, :token
+            VALUES( 0, :id_user, :token, NOW(),NOW()
         )";
 
         $paramsToken = [
@@ -58,7 +58,7 @@ class User extends Model
 
     /**
      * Método responsável por verificar se existe um email já cadastrado
-     * 
+     *
      * @param string $email
      */
     public static function emailVerify($email)
@@ -96,7 +96,7 @@ class User extends Model
 
     /**
      * Método responsável por buscar um token de um usuario
-     * 
+     *
      * @param array $dados
      */
     public static function getToken($dados)
@@ -142,7 +142,7 @@ class User extends Model
 
     /**
      * Método responsável por verificar se um token existe no banco de dados
-     * 
+     *
      * @param string $token
      */
     public static function VerifyToken($token)
@@ -160,7 +160,7 @@ class User extends Model
             'token' => $token
         ];
 
-        //RETORNA SE O TOKEN EXISTE OU NÃO  
+        //RETORNA SE O TOKEN EXISTE OU NÃO
         return count(DB::select($query, $params)) == 1 ? true : false;
     }
 }
